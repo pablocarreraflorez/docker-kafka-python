@@ -49,4 +49,6 @@ for tweet in consumer:
     # Update the plot with the new data
     tweets_grouped.plot(x = "user", y = "count", kind = "barh", zorder = 2, width = 0.85, legend = None)
     plt.title("Most active users", weight = "bold")
+    plt.xlabel("Number of tweets publicated")
+    plt.ylabel("")
     plt.pause(0.001)

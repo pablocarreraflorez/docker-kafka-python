@@ -14,12 +14,13 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler, Stream
 from kafka import KafkaProducer
 import json
+import twitter_config
 
 # Set API keys for Twitter
-consumer_key =  "s5V7ZLhIu8oO7nd9hPrUW7jai"
-consumer_secret = "MZn4ewjiZMNOD335TtANG7Mgf16lGx6a3qejeyPZxjm1gn14jc"
-access_token = "826382041105182721-iLCkaPKzSXCmW7GyIRgNFQWYOy9UXat"
-access_token_secret = "Lg7v1jwARlgJy2hpuCvrqrYk9t4pt1hi8Hs4if88BdoR7"
+consumer_key = twitter_config.consumer_key
+consumer_secret = twitter_config.consumer_secret
+access_token = twitter_config.access_token
+access_token_secret = twitter_config.access_token_secret
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -39,8 +40,8 @@ class StdOutListener(StreamListener):
         print (status)
 
 # Make it work
-to_track = ["España"]
+to_track = ["Valencia"]
 
 l = StdOutListener()
 stream = Stream(auth, l)
-stream.filter(track = to_track)
+stream.filter(track = to_track, stall_warnings = True)
