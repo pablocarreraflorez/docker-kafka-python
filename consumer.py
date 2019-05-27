@@ -49,4 +49,5 @@ for tweet in consumer:
     plt.plot(tweets_grouped)
     plt.xticks(rotation = 45)
     plt.title("Tweets publicated per minute", weight = "bold")
+    plt.ylabel("Number of tweets publicated")
     plt.pause(0.001)
